@@ -1,18 +1,10 @@
-FROM stackbrew/debian:jessie
-ENV ARCH amd64
-ENV DIST wheezy
-ENV MIRROR http://ftp.nl.debian.org
-RUN apt-get -q update
-RUN apt-get -qy install dnsmasq wget iptables
+FROM centos:latest
+MAINTAINER "kev" spam4kev@gmail.com
+
 RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework
 RUN chmod +x pipework
-RUN mkdir /tftp
-WORKDIR /tftp
-RUN wget $MIRROR/debian/dists/$DIST/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/linux
-RUN wget $MIRROR/debian/dists/$DIST/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/initrd.gz
-RUN wget $MIRROR/debian/dists/$DIST/main/installer-$ARCH/current/images/netboot/debian-installer/$ARCH/pxelinux.0
-RUN mkdir pxelinux.cfg
-RUN printf "DEFAULT linux\nKERNEL linux\nAPPEND initrd=initrd.gz\n" >pxelinux.cfg/default
+RUN mkdir /tftpboot
+WORKDIR /tftpboot
 CMD \
     echo Setting up iptables... &&\
     iptables -t nat -A POSTROUTING -j MASQUERADE &&\
