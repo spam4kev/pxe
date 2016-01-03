@@ -1,9 +1,10 @@
 FROM centos:latest
 MAINTAINER "kev" spam4kev@gmail.com
 
-RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework
-RUN chmod +x pipework
-RUN mkdir /tftpboot
+RUN yum install -y wget
+RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework && \
+    chmod +x pipework && \
+    mkdir /tftpboot
 WORKDIR /tftpboot
 CMD \
     echo Setting up iptables... &&\
