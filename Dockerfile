@@ -6,7 +6,7 @@ RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/
     chmod +x pipework && \
     mkdir /tftpboot
 WORKDIR /tftpboot
-CMD \
+RUN \
     echo Setting up iptables... &&\
     iptables -t nat -A POSTROUTING -j MASQUERADE &&\
     echo Waiting for pipework to give us the eth1 interface... &&\
