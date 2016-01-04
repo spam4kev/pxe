@@ -1,17 +1,18 @@
 FROM centos:latest
 MAINTAINER "kev" spam4kev@gmail.com
 
-RUN yum install -y wget
-RUN wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework && \
+RUN yum install -y wget \
+                   iptables-services && \
+    wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework && \
     chmod +x pipework && \
     mkdir /tftpboot
 WORKDIR /tftpboot
-RUN \
+CMD \
     echo Setting up iptables... &&\
     iptables -t nat -A POSTROUTING -j MASQUERADE &&\
     echo Waiting for pipework to give us the eth1 interface... &&\
     /pipework --wait &&\
-   myIP=$(ip addr show dev eth1 | awk -F '[ /]+' '/global/ {print $3}') &&\
+    myIP=$(grep $(hostname) /etc/hosts | cut -d: -f2 | awk '{ print $1}') &&\
     mySUBNET=$(echo $myIP | cut -d '.' -f 1,2,3) &&\
     echo Starting DHCP+TFTP server...&&\
     dnsmasq  \
