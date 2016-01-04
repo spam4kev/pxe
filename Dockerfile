@@ -22,7 +22,7 @@ CMD \
 	    --dhcp-boot=net:IPXEBOOT,bootstrap.ipxe,$myIP \
             --dhcp-boot=undionly.kpxe \
 	    --enable-tftp \
-            --tftp-root=/tftproot \
+            --tftp-root=/tftpboot \
             --no-daemon
 # Let's be honest: I don't know if the --pxe-service option is necessary.
 # The iPXE loader in QEMU boots without it.  But I know how some PXE ROMs
