@@ -2,11 +2,11 @@ FROM centos:latest
 MAINTAINER "kev" spam4kev@gmail.com
 
 RUN yum install -y wget \
-                   iptables-services && \
+                   iptables-services \
+		   dnsmasq && \
     wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework && \
     chmod +x pipework && \
     mkdir /tftpboot
-WORKDIR /tftpboot
 CMD \
     echo Setting up iptables... &&\
     iptables -t nat -A POSTROUTING -j MASQUERADE &&\
