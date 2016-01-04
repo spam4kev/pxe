@@ -7,6 +7,7 @@ RUN yum install -y wget \
     wget --no-check-certificate https://raw.github.com/jpetazzo/pipework/master/pipework && \
     chmod +x pipework && \
     mkdir /tftpboot
+COPY ./pxe-entrypoint.sh /pxe-entrypoint.sh
 CMD \
     echo Setting up iptables... &&\
     iptables -t nat -A POSTROUTING -j MASQUERADE &&\
