@@ -10,5 +10,5 @@ wget http://10.11.11.59:8150/api/microkernel/bootstrap?nic_max=1 -O bootstrap.ip
 		--port=0 \
 		--log-dhcp \
 		--bind-dynamic \
-		--dhcp-range=10.11.11.201,10.11.11.202
+		--dhcp-range=10.11.11.201,10.11.11.202 \
 		--no-daemon
