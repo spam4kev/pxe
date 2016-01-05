@@ -2,12 +2,12 @@ server:
   build: .
 #  net: "host"
   ports:
-    - 53:53/udp         #dnsmasq dns port
-    - 53:53/tcp         #dnsmasq dns port
-    - 67:67/udp         #dnsmasq dhcp/bootps port
-#    - 68:68/udp         #dhcp bootp client
-    - 69:69/udp         #tftp port
-    - 4011:4011/udp    #tftp proxydhcp port
+    - 10.11.11.200:53:53/udp         #dnsmasq dns port
+    - 10.11.11.200:53:53/tcp         #dnsmasq dns port
+    - 10.11.11.200:67:67/udp         #dnsmasq dhcp/bootps port
+    - 10.11.11.200:68:68/udp         #dhcp bootp client
+    - 10.11.11.200:69:69/udp         #tftp port
+    - 10.11.11.200:4011:4011/udp    #tftp proxydhcp port
   volumes:
     - /media/BitTorrent/operating_systems/:/tftpboot/images/
   working_dir: /tftpboot
