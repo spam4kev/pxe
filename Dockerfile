@@ -1,13 +1,17 @@
 FROM centos:latest
 MAINTAINER "kev" spam4kev@gmail.com
 
+RUN yum update
 RUN yum install -y wget \
 		   tftp-server \
 		   dnsmasq && \
     mkdir /tftpboot
 COPY ./pxe-entrypoint.sh /tmp/pxe-entrypoint.sh
 RUN chmod +x /tmp/pxe-entrypoint.sh
+WORKDIR /tftpboot
 CMD \
+    wget http://boot.ipxe.org/undionly.kpxe && \
+    wget http://10.11.11.59:8150/api/microkernel/bootstrap?nic_max=1 -O bootstrap.ipxe && \
     dnsmasq  \
 		--dhcp-match=IPXEBOOT,175 \
 		--dhcp-boot=net:IPXEBOOT,bootstrap.ipxe \
