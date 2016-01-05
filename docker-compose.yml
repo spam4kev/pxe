@@ -1,6 +1,6 @@
 pxeserver:
   build: .
-  net: "host"
+#  net: "host"
   volumes:
     - /media/BitTorrent/operating_systems/:/tftpboot/images/
   working_dir: /tftpboot
