@@ -1,0 +1,12 @@
+ipxeserver:
+  image: spam4kev/pxe
+  net: "host"
+  volumes:
+    - /media/BitTorrent/operating_systems/:/tftpboot/images/
+  working_dir: /tftpboot
+#  command: install -y wget tftp-server dnsmasq
+#  #  command: wget http://boot.ipxe.org/undionly.kpxe
+#  #  command: wget http://10.11.11.59:8150/api/microkernel/bootstrap?nic_max=1 -O bootstrap.ipxe
+#  #  command: "/usr/sbin/dnsmasq --dhcp-match=IPXEBOOT,175 --dhcp-boot=net:IPXEBOOT,bootstrap.ipxe --dhcp-boot=undionly.kpxe --enable-tftp --tftp-root=/tftpboot --port=0 --log-dhcp --bind-dynamic --dhcp-range=10.11.11.201,10.11.11.202,1h --no-daemon"
+    command: /tmp/pxe-entrypoint.sh
+
