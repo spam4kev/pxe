@@ -2,9 +2,12 @@ pxeserver:
   build: .
 #  net: "host"
   ports:
-    - 68:68/udp
-    - 69:69/udp
-    - 4011:4011/udp
+    - 53:53/udp         #dnsmasq dns port
+    - 53:53/tcp         #dnsmasq dns port
+    - 67:67/udp         #dnsmasq dhcp/bootps port
+#    - 68:68/udp         #dhcp bootp client
+    - 69:69/udp         #tftp port
+    - 4011:4011/udp    #tftp proxydhcp port
   volumes:
     - /media/BitTorrent/operating_systems/:/tftpboot/images/
   working_dir: /tftpboot
