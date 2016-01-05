@@ -9,6 +9,7 @@ RUN yum install -y wget \
 		   dnsmasq && \
     mkdir /tftpboot
 COPY ./pxe-entrypoint.sh /tmp/pxe-entrypoint.sh
+COPY ./pxe-entrypoint-razor.sh /tmp/pxe-entrypoint-razor.sh
 RUN chmod +x /tmp/pxe-entrypoint.sh
 WORKDIR /tftpboot
 CMD \

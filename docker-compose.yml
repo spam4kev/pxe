@@ -11,4 +11,5 @@ pxeserver:
   volumes:
     - /media/BitTorrent/operating_systems/:/tftpboot/images/
   working_dir: /tftpboot
+  command: /tmp/pxe-entrypoint.sh
 
