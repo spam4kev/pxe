@@ -12,5 +12,4 @@ dnsmasq  \
 	--log-dhcp \
 	--bind-dynamic \
 	--dhcp-range=10.11.11.1,proxy \
-#        --dhcp-range=$mySUBNET.201,$mySUBNET.202,255.255.255.0,1h \
 	--no-daemon
