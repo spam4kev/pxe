@@ -13,7 +13,7 @@ RUN chmod +x /tmp/pxe-entrypoint.sh
 WORKDIR /tftpboot
 CMD \
     wget --tries=0 http://boot.ipxe.org/undionly.kpxe && \
-    myIP=$(ip addr show dev eth1 | awk -F '[ /]+' '/global/ {print $3}') && \
+    myIP=$(ip addr show dev eth0 | awk -F '[ /]+' '/global/ {print $3}') && \
     mySUBNET=$(echo $myIP | cut -d '.' -f 1,2,3) && \
     dnsmasq  \
 		--dhcp-match=IPXEBOOT,175 \
