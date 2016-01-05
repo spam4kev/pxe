@@ -11,8 +11,8 @@ COPY ./pxe-entrypoint.sh /tmp/pxe-entrypoint.sh
 RUN chmod +x /tmp/pxe-entrypoint.sh
 WORKDIR /tftpboot
 CMD \
-    wget --tries=inf http://boot.ipxe.org/undionly.kpxe && \
-    wget --tries=inf http://10.11.11.59:8150/api/microkernel/bootstrap?nic_max=1 -O bootstrap.ipxe && \
+    wget --tries=0 http://boot.ipxe.org/undionly.kpxe && \
+    wget --tries=0 http://10.11.11.59:8150/api/microkernel/bootstrap?nic_max=1 -O bootstrap.ipxe && \
     dnsmasq  \
 		--dhcp-match=IPXEBOOT,175 \
 		--dhcp-boot=net:IPXEBOOT,bootstrap.ipxe \
