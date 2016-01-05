@@ -1,6 +1,10 @@
 pxeserver:
   build: .
 #  net: "host"
+  ports:
+    - 68:68/udp
+    - 69:69/udp
+    - 4011:4011/udp
   volumes:
     - /media/BitTorrent/operating_systems/:/tftpboot/images/
   working_dir: /tftpboot
