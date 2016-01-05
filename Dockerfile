@@ -6,6 +6,7 @@ RUN yum update
 RUN yum install -y wget \
 		   tftp-server \
 		   iproute \
+		   iptables-services \
 		   dnsmasq && \
     mkdir /tftpboot
 COPY ./pxe-entrypoint.sh /tmp/pxe-entrypoint.sh
