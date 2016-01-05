@@ -10,7 +10,7 @@ RUN yum install -y wget \
     mkdir /tftpboot
 COPY ./pxe-entrypoint.sh /tmp/pxe-entrypoint.sh
 COPY ./pxe-entrypoint-razor.sh /tmp/pxe-entrypoint-razor.sh
-RUN chmod +x /tmp/pxe-entrypoint.sh
+RUN chmod +x /tmp/pxe-entrypoint*
 WORKDIR /tftpboot
 CMD \
     wget --tries=0 http://boot.ipxe.org/undionly.kpxe && \
