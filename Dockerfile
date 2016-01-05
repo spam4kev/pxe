@@ -5,6 +5,7 @@ RUN yum install -y wget \
 		   tftp-server \
 		   dnsmasq && \
     mkdir /tftpboot
+COPY ./pxe-entrypoint.sh /tmp/pxe-entrypoint.sh
 CMD \
     dnsmasq  \
 		--dhcp-match=IPXEBOOT,175 \
