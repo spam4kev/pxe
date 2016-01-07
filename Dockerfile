@@ -26,6 +26,7 @@ CMD \
 		--port=0 \
 		--log-dhcp \
 		--bind-dynamic \
-		--dhcp-range=$mySUBNET.201,$mySUBNET.202,255.255.255.0,1h \
+		--dhcp-range=10.11.11.1,proxy \
 		--no-daemon
 #		--dhcp-range=10.11.11.201,10.11.11.202,1h \
+#		--dhcp-range=$mySUBNET.201,$mySUBNET.202,255.255.255.0,1h \

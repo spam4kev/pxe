@@ -6,4 +6,9 @@ docker run -ti -p 53:53/udp -p 53:53 -p 67:67 -p 69:69 -p 4011:4011 -v /media/Bi
 #on docker host based on https://goldmann.pl/blog/2014/01/21/connecting-docker-containers-on-multiple-hosts/
 sudo sh -c 'echo 1 > /proc/sys/net/ipv4/conf/docker0/arp_accept'
 sudo sh -c 'echo 1 > /proc/sys/net/ipv4/conf/enp0s3/arp_accept'
+#or
+sudo sysctl net.ipv4.conf.enp0s3.proxy_arp=1 
+sudo sysctl net.ipv4.conf.docker0.proxy_arp=1
+sudo sysctl net.ipv4.ip_forward=1
+sudo sysctl net.ipv4.conf.all.forwarding=1	#allowed all interfaces to forward traffic if exposed in dockerfile
 ```
