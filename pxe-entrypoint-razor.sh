@@ -5,13 +5,12 @@ chmod +x /tftpboot/bootstrap.ipxe
 chmod +x /tftpboot/undionly.kpxe
 dnsmasq  \
 	--dhcp-match=IPXEBOOT,175 \
+	--enable-tftp \
+	--dhcp-range=10.11.11.1,proxy \
+	--tftp-root=/tftpboot \
 	--dhcp-boot=net:IPXEBOOT,bootstrap.ipxe \
 	--dhcp-boot=undionly.kpxe \
-	--enable-tftp \
-	--port=0 \
-	--tftp-root=/tftpboot \
 	--log-dhcp \
-	--dhcp-range=10.11.11.201,10.11.11.201 \
 	--no-daemon
 #	--dhcp-range=10.11.11.201,10.11.11.202 \
 #	--dhcp-range=10.11.11.1,proxy \
