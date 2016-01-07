@@ -1,8 +1,8 @@
 pxeserver:
   build: .
 #  image: spam4kev/pxe
-  links:
-   - razorserver
+  external_links:
+   - razorserver_razorserver_1
   net: "host"
   ports:
     - 53:53/udp         #dnsmasq dns port
