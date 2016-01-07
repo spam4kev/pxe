@@ -1,7 +1,7 @@
 FROM centos:latest
 MAINTAINER "kev" spam4kev@gmail.com
 
-EXPOSE 53 53/tcp 67 68/udp 69/udp 4011/udp
+EXPOSE 53 53/tcp 67 68/udp 69/udp 69 4011/udp
 #RUN yum update
 RUN yum install -y wget \
 		   tftp-server \
