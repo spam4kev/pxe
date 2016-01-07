@@ -4,6 +4,19 @@ This container is used by spam4kev/razor-server as a PXE/TFTP/DCHP server and is
 
 Becuase tftp returns traffic over a random ephimeral port after first client connection on port 69, a special network mode using the hosts interface as the containers interface must be used. This can be done using 'docker run --net=host \<other options> \<image name>'.
 
+- iPXE boot using dnsmasq
+```bash
+dnsmasq  \
+        --dhcp-match=IPXEBOOT,175 \
+          # 175 sets a variable to the value before the comma. In this case, the variable is IPXEBOOT
+        --dhcp-boot=net:IPXEBOOT,bootstrap.ipxe \
+          # This sets dhcp-boot option equal to whatever is after the comma if the variable to the
+          # right of the colon is set. Since our previous statement sets IPXEBOOT, the dhcp-boot gets
+          # a value of bootstrap.ipxe
+        --dhcp-boot=undionly.kpxe \
+          # this sets dhcp-boot to what is on the right of the equal sign. This will be applied at first tftpboot
+          # because within the undionly.kpxe it says to boot the net option.
+
 -  troubleshooting
 ```bash
 docker run -ti -p 53:53/udp -p 53:53 -p 67:67 -p 68:68/udp -p 69:69 -p 69:69/udp -p 4011:4011/udp --net=host -v /media/BitTorrent/operating_systems/:/tftpboot/images/ centos sh

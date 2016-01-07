@@ -9,9 +9,9 @@ dnsmasq  \
 	--dhcp-boot=undionly.kpxe \
 	--enable-tftp \
 	--tftp-root=/tftpboot \
-	--port=0 \
 	--log-dhcp \
-	--bind-dynamic \
-	--dhcp-range=10.11.11.i1,proxy \
+	--dhcp-range=10.11.11.1,proxy \
 	--no-daemon
 #	--dhcp-range=10.11.11.201,10.11.11.202 \
+#	--port=0 \
+#	--bind-dynamic \
