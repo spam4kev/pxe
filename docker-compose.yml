@@ -11,8 +11,8 @@ pxeserver:
     - 68:68/udp         #dhcp bootp client
     - 69:69/udp         #tftp port
     - 4011:4011/udp    #tftp proxydhcp port
-  volumes:
-    - /media/BitTorrent/operating_systems/:/tftpboot/images/
+#  volumes:
+#    - /media/BitTorrent/operating_systems/:/tftpboot/images/
   working_dir: /tftpboot
   command: /tmp/pxe-entrypoint-razor.sh
 

@@ -15,7 +15,20 @@ dnsmasq  \
           # a value of bootstrap.ipxe
         --dhcp-boot=undionly.kpxe \
           # this sets dhcp-boot to what is on the right of the equal sign. This will be applied at first tftpboot
-          # because within the undionly.kpxe it says to boot the net option.
+          # because within the undionly.kpxe it says to boot the net option
+        --enable-tftp \
+	  # turns on tftp service in dnsmasq
+        --tftp-root=/tftpboot \
+	  # sets the directory that iPXE clients will pull from. in our scripts, we put bootstrap.ipxe & 
+	  # undionly.kpxe in /tftpboot on image startup.
+        --log-dhcp \
+	  # help with troubleshooting any problems
+        --dhcp-range=10.11.11.1,proxy \
+	  # when proxy is listed to the right of the comma, the server differs all iPXE clients toe the 
+	  # ip set before the comma.
+        --no-daemon
+	  # needed so docker container stays running(?)
+```
 
 -  troubleshooting
 ```bash
