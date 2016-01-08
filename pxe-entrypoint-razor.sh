@@ -6,7 +6,7 @@ chmod +x /tftpboot/undionly.kpxe
 dnsmasq  \
 	--dhcp-match=IPXEBOOT,175 \
 	--enable-tftp \
-	--dhcp-range=10.11.11.1,proxy \
+	--dhcp-range=10.11.11.201,10.11.11.201,1h \
 	--tftp-root=/tftpboot \
 	--dhcp-boot=net:IPXEBOOT,bootstrap.ipxe \
 	--dhcp-boot=undionly.kpxe \
