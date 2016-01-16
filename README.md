@@ -32,7 +32,7 @@ dnsmasq  \
 
 -  troubleshooting
 ```bash
-docker run -ti -p 53:53/udp -p 53:53 -p 67:67 -p 68:68/udp -p 69:69 -p 69:69/udp -p 4011:4011/udp --net=host -v /media/BitTorrent/operating_systems/:/tftpboot/images/ centos sh
+docker run -ti -p 53:53/udp -p 53:53 -p 67:67 -p 68:68/udp -p 69:69 -p 69:69/udp -p 4011:4011/udp --net=host centos sh
 #on docker host based on https://goldmann.pl/blog/2014/01/21/connecting-docker-containers-on-multiple-hosts/
 sudo sh -c 'echo 1 > /proc/sys/net/ipv4/conf/docker0/arp_accept'
 sudo sh -c 'echo 1 > /proc/sys/net/ipv4/conf/enp0s3/arp_accept'
