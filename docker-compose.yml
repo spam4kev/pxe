@@ -1,6 +1,6 @@
 pxeserver:
-#  build: .
-  image: spam4kev/pxe
+  build: .
+#  image: spam4kev/pxe
   external_links:
    - razorserver_razorserver_1
   net: "host"
