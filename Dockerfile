@@ -21,7 +21,7 @@ CMD \
 		--dhcp-match=IPXEBOOT,175 \
 		--enable-tftp \
 		--dhcp-range=10.11.11.0,static \
-	        --dhcp-host=c8:60:00:de:ba:76,10.11.11.4 \
+	        --dhcp-host=c8:60:00:de:ba:76,10.11.11.201 \
 		--tftp-root=/tftpboot \
 		--dhcp-boot=net:IPXEBOOT,bootstrap.ipxe \
 		--dhcp-boot=undionly.kpxe \
